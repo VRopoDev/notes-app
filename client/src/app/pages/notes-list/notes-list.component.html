@@ -1,0 +1,43 @@
+<div class="main-container">
+
+    <app-categories (categoryEvent)="receiveCategory($event)"></app-categories>
+
+    <br>
+    <br>
+
+    <div class="search-bar-container">
+        <div class="field">
+            <p class="control has-icons-left">
+                <input #search class="input" type="text" (keyup)="filter(search.value)" placeholder="Filter">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="priority">
+        <div class="is-pulled left">
+            <label id="pr-title">Priority Filter :</label>
+            <button class="button is-primary btn" (click)="priorityFilter('low')">Low</button>
+            <button class="button is-warning btn" (click)="priorityFilter('high')">High</button>
+            <button class="button is-light btn" (click)="priorityFilter('clear')">Clear</button>
+        </div>
+    </div>
+
+    <div class="notes-list" [@listAnim]>
+        <app-note-card 
+            *ngFor="let note of filteredNotes;"
+            [routerLink]=[generateNoteURL(note)]
+            [@itemAnim]
+            (delete)="deleteNote(note._id)"
+            [title]="note.title" 
+            [body]="note.body">
+        </app-note-card>
+    </div>
+
+    <button class="button floating-add-button is-primary" routerLink="new">+ Add Note</button>
+</div>

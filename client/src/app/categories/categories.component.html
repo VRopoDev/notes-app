@@ -1,0 +1,11 @@
+<div class="tabs is-toggle  is-small">
+  <ul>
+    <li #All (click)="onClickAll('all')" class="is-active"><a>All</a></li>
+    <li 
+      *ngFor = "let category of categories; let i = index;"
+      (click)="onClick(i, category.title)"
+      [class.is-active]="selectedIndex === i+1">
+        <a>#{{ category.title }} </a>
+    </li>
+  </ul>
+</div>

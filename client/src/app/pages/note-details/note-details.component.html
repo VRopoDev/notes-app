@@ -1,0 +1,63 @@
+<div class="form-container">
+
+    <h1 id="h1">{{ h1 }}</h1>
+
+    <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
+
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input type="text" name="title" [ngModel]="note.title" required class="input">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label class="label">Category</label>
+            <div class="control">
+                <input type="text" name="category" [ngModel]="note.category"  class="input">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label class="label">Priority</label>
+            <div class="is-grouped">
+                <div class="control radio">
+                    <label class="label" for="low">Low</label>
+                    <input id="low" type="radio" [ngModel]="note.priority" value="low" name="priority" class="radio-btn">
+                    <label class="label" for="high">High</label>
+                    <input id="high" type="radio" [ngModel]="note.priority" value="high" name="priority" class="radio-btn">
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label class="label">Body</label>
+            <div class="control">
+                <textarea class="textarea" name="body" [ngModel]="note.body"></textarea>
+            </div>
+        </div>
+
+        <div class="field is-grouped is-pulled-right">
+            <div class="control">
+                <button class="button is-text" type="button" (click)="cancel()">Cancel</button>
+            </div>
+            <div class="control">
+                <button class="button is-primary" type="submit" [disabled]="!noteForm.valid">Save</button>
+            </div>
+        </div>
+
+        <div class="field  is-pulled-left">
+            <div class="control">
+                <button #delete class="button is-danger" type="button" (click)="deleteCall()">Delete</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

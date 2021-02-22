@@ -1,0 +1,14 @@
+<div class="delete-container">
+    <div class="field">
+        <h2>Are you sure to delete this note ?</h2>
+    </div>
+
+    <div class="field is-grouped is-pulled-right">
+        <div class="control">
+            <button class="button is-text" type="button" (click)="cancel()">Cancel</button>
+        </div>
+        <div class="control">
+            <button #delete class="button is-danger" type="button" (click)="deleteNote()">Delete</button>
+        </div>
+    </div>
+</div>
